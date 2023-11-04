@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  margin: 50px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label, input {
+  margin: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h2>Add User</h2>
+      <form action="" id="assUserForm">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name" required>
+        <label for="age">Age</label>
+        <input type="number" name="" id="age" required>
+        <label for="city">City</label>
+        <input type="text" id="city" required>
+        <label for="batch-name">Batch Name</label>
+     
+        <select name="" id="batch">
+            <option value="WEB-13">WEB-13</option>
+            <option value="WEB-14">WEB-14</option>
+            <option value="WEB-15">WEB-15</option>
+        </select>
+
+        <label for="profession">Profession</label>
+        <select name="" id="profession">
+            <option value="FSD">FSD</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Student">Student</option>
+        </select>
+
+        <input type="submit">
+      </form>
+      <button onclick="home()" style="margin-top: 30px;">Back to Home</button>
+    </div>
+
+</body>
+     <script>
+        document.getElementById("assUserForm").addEventListener("submit",function(e){
+     e.preventDefault();
+     const name = document.getElementById("name").value 
+     const age = document.getElementById("age").value 
+     const city = document.getElementById("city").value
+     const batch = document.getElementById("batch").value
+     const profession = document.getElementById("profession").value
+     console.log(name,age,city,batch,profession)
+
+     fetch("http://localhost:8000/add",{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+            name:name,
+            age:age,
+            city:city,
+            batch:batch,
+            profession:profession
+        })
+     })
+     .then(res=>res.json())
+     .then(data=>{
+        alert("Successfully registered")
+        
+     })
+        })
+
+        function home(){
+            window.location.href= "../index.html";
+        }
+     </script>
+</html>

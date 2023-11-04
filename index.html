@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaiverse Events</title>
+    <style>
+         body {
+            font-family: Arrial, sans-serif;
+         }
+         .container {
+  text-align: center;
+  margin: 50px auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.adminSection, .userSection {
+  margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Masaiverse Meet</h1>
+        <div class="buttons">
+             <button id="adminButton">Admin Section</button>
+             <button id="userButton">User Section</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const adminButton = document.getElementById("adminButton")
+    const userButton = document.getElementById("userButton")
+    
+    adminButton.addEventListener("click",function(){
+        window.location.href = "./frontend/admin.html"
+    })
+
+    userButton.addEventListener("click",function(){
+        window.location.href = "./frontend/user.html"
+    })
+</script>
+</html>

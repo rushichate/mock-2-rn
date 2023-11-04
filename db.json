@@ -1,0 +1,87 @@
+{
+  "admin": [
+    {
+      "email": "admin",
+      "password": "admin",
+      "token": "valid token"
+    }
+  ],
+  "users": [
+    {
+      "name": "Rushikesh",
+      "id": 1
+    },
+    {
+      "name": "d",
+      "age": "5",
+      "city": "g",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 2
+    },
+    {
+      "name": "d",
+      "age": "6",
+      "city": "g",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 3
+    },
+    {
+      "name": "e",
+      "age": "5",
+      "city": "g",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 4
+    },
+    {
+      "name": "f",
+      "age": "6",
+      "city": "f",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 5
+    },
+    {
+      "name": "f",
+      "age": "5",
+      "city": "f",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 6
+    },
+    {
+      "name": "g",
+      "age": "5",
+      "city": "d",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 7
+    },
+    {
+      "name": "df",
+      "age": "6",
+      "city": "g",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 8
+    },
+    {
+      "name": "ds",
+      "age": "5",
+      "city": "g",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 9
+    },
+    {
+      "name": "s",
+      "age": "3",
+      "city": "d",
+      "batch": "WEB-13",
+      "profession": "FSD",
+      "id": 10
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+<body>
+    <div id="container">
+        <h2>Users Data</h2>
+       <div id="searchBar">
+        <label for="search">search</label>
+        <input type="text" name="" id="search" oninput="searchUser()" placeholder="Pleasre enter name">
+       </div>
+
+       <div id="sortFilter">
+         <label for="sort"> Sort by age</label>
+            <select name="" id="sort" onchange="sortUsers()">
+                <option value="asc">Ascending</option>
+                <option value="dec">Descending</option>
+            </select>
+
+            <label for="filter"> Filter by profession</label>
+            <select name="" id="filter" onchange="filterUsers()">
+                <option value="all">All</option>
+                <option value="FSD">FSD</option>
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+            </select>
+       </div>
+
+       <div id="userList" style="display: grid; grid-template-columns: repeat(3,1fr);"></div>
+    </div>
+</body>
+<script>
+
+
+
+     function fetchUsers(){
+        fetch("http://localhost:8000/")
+        .then(res=>res.json())
+        .then(data=>{
+            displayUsers(data.users)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+     }
+
+     function displayUsers(data){
+        const userList = document.getElementById("userList")
+        userList.innerHTML = ""
+
+        data.forEach(user =>{
+            const userCard = document.createElement("div")
+            userCard.classList.add("user-card")
+            const image = document.createElement("img")
+            image.src = `../photo.jpeg`
+            userCard.appendChild(image)
+            const name = document.createElement("h2")
+            name.innerText = user.name
+            userCard.appendChild(name)
+            const age = document.createElement("p")
+            age.innerText = user.age
+            userCard.appendChild(age)
+            const city = document.createElement("p")
+            city.innerText = user.city
+            userCard.appendChild(city)
+            const batch = document.createElement("h3")
+            batch.innerText = user.batch
+            userCard.appendChild(batch)
+            const profession = document.createElement("p")
+            profession.innerText = user.profession
+            userCard.appendChild(profession)
+            userList.appendChild(userCard)
+        })
+     }
+   
+      function sortUsers(){
+        const sortBy = document.getElementById("sort").value
+      
+        fetch("http://localhost:8000/")
+        .then(res=>res.json())
+        .then(data =>{
+              let sortedUsers = data.users.slice()
+              if(sortBy === "asc"){
+                sortedUsers.sort((a,b)=> a.age - b.age)
+              }else{
+                sortedUsers.sort((a,b) => b.age - a.age)
+              }
+              displayUsers(sortedUsers)
+        }).catch(error=>{
+            console.log(error)
+        })
+      }
+
+      function filterUsers(){
+        const filterBy = document.getElementById("filter").value
+
+        fetch("http://localhost:8000/")
+        .then(res=>res.json())
+        .then(data=>{
+            if(filterBy  == "all"){
+                displayUsers(data.users)
+            }else{
+                const filteredUsers = data.users.filter(user => user.profession == filterBy)
+                displayUsers(filteredUsers)
+            }
+        }).catch(error=>{
+            console.log(error)
+        })
+      }
+
+    fetchUsers()
+</script>
+</html>
